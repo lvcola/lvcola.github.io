@@ -71,13 +71,13 @@
 				<div class="tips-box hide">
 					<div class="tips-arrow"></div>
 					<ul class="tips-inner">
-						<li>Menu</li>
+						<li>菜单</li>
 						<li>Tags</li>
 						
-						<li>Links</li>
+						<li>友情链接</li>
 						
 						
-						<li>A propos</li>
+						<li>Über</li>
 						
 					</ul>
 				</div>
@@ -243,23 +243,6 @@ GPIO_InitStructure.GPIO_Pin =ULTRA1_ECHO;        //接收电平引脚
 }
 
 
-void Ultran2_Init(void)//后置超声波模块
-{
-GPIO_InitTypeDef GPIO_InitStructure;
- RCC_APB2PeriphClockCmd(ULTRA_CLK, ENABLE);
-
-GPIO_InitStructure.GPIO_Pin =ULTRA2_TRIG;       
- GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
- GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;
- GPIO_Init(ULTRA_PORT, &amp;GPIO_InitStructure);
-GPIO_ResetBits(ULTRA_PORT,ULTRA2_TRIG);
-
-GPIO_InitStructure.GPIO_Pin =ULTRA2_ECHO;        
- GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
- GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN_FLOATING;
- GPIO_Init(ULTRA_PORT, &amp;GPIO_InitStructure);    
-}
-
 void Ultra1_Ranging(float *p)
 {
 u8 i;
@@ -281,29 +264,6 @@ for(i=0;i&lt;3;i++)
     delay_ms(60);//防止发射信号对回响信号的影响
 }
 *p=Ultr_Temp/3/1000;     //取三次平均值，减少误差cm
-}
-
-void Ultra2_Ranging(float *p)
-{
-u8 i;
-u32 j;
-float Ultr_Temp;    
-for(i=0;i&lt;3;i++)
-{
-    TRIG2_Send=1;
-    delay_ms(10);
-    TRIG2_Send=0;
-    while(!ECHO2_Reci);
-    while(ECHO2_Reci)
-    {
-        delay_us(10);
-        j++;
-    }
-    Ultr_Temp+=340/2*j;
-    j=0;
-    delay_ms(60);
-}
-*p=Ultr_Temp/3/1000;     
 }
 </code></pre>
       

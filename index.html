@@ -77,7 +77,7 @@
 						<li>Links</li>
 						
 						
-						<li>About</li>
+						<li>A propos</li>
 						
 					</ul>
 				</div>
@@ -305,100 +305,6 @@ for(i=0;i&lt;3;i++)
 }
 *p=Ultr_Temp/3/1000;     
 }
-</code></pre><h3 id="电机控制"><a href="#电机控制" class="headerlink" title="电机控制"></a>电机控制</h3><pre><code>1.#include &quot;pwm.h&quot;
-
-void pwm_init()
-{
-TIM_TimeBaseInitTypeDef TIM_TimeBaseStructure;
-GPIO_InitTypeDef GPIO_InitStructure;
-TIM_OCInitTypeDef TIM_OCInitStructure;
-
-RCC_APB1PeriphClockCmd(RCC_APB1Periph_TIM3,ENABLE);//¹Ò½ÓÔÚAPB1
-RCC_APB2PeriphClockCmd(RCC_APB2Periph_GPIOC,ENABLE);//Ð¡µÆµÄÊ±ÖÓ
-RCC_APB2PeriphClockCmd(RCC_APB2Periph_AFIO,ENABLE);
-
-
-TIM_TimeBaseStructure.TIM_Period = 900;//12.5us
-TIM_TimeBaseStructure.TIM_Prescaler = 0;
-TIM_TimeBaseStructure.TIM_ClockDivision = 0x0;
-TIM_TimeBaseStructure.TIM_CounterMode = TIM_CounterMode_Up;
-TIM_TimeBaseInit(TIM3, &amp;TIM_TimeBaseStructure);
-
-
-
-TIM_OCInitStructure.TIM_OCMode = TIM_OCMode_PWM1;
-TIM_OCInitStructure.TIM_OutputState = TIM_OutputState_Enable;
-TIM_OCInitStructure.TIM_OCPolarity = TIM_OCPolarity_Low;//µÆÎªµÍµçÆ½ÁÁÔòÎªLOW
-TIM_OC1Init(TIM3,&amp;TIM_OCInitStructure);
-TIM_OC1PreloadConfig(TIM3,TIM_OCPreload_Enable);//CCR1Ô¤×°ÔØÊ¹ÄÜ
-TIM_OC2Init(TIM3,&amp;TIM_OCInitStructure);
-TIM_OC2PreloadConfig(TIM3,TIM_OCPreload_Enable);//CCR2Ô¤×°ÔØÊ¹ÄÜ
-
-GPIO_InitStructure.GPIO_Pin = GPIO_Pin_6|GPIO_Pin_7;    //¹Ü½Å£¬Ô­ÀíÍ¼ÖÐ¿´
-GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz; 
-GPIO_InitStructure.GPIO_Mode = GPIO_Mode_AF_PP; //¹Ü½Å¹¤×÷×´Ì¬    .¸´ÓÃÍÆÍìÊä³ö
-GPIO_Init(GPIOC,&amp;GPIO_InitStructure);//¹Ò½ÓÔÚPC¶Ë¿ÚÔòÔÚC¶Ë¿Ú
-TIM_Cmd(TIM3,ENABLE);//Ê¹ÄÜ»òÕßÊ§ÄÜTIMxÍâÉè
-
-GPIO_InitStructure.GPIO_Pin = GPIO_Pin_0|GPIO_Pin_1|GPIO_Pin_2|GPIO_Pin_3;    //¹Ü½Å£¬Ô­ÀíÍ¼ÖÐ
-GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz; 
-GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP; //¹Ü½Å¹¤×÷×´Ì¬    ÍÆÍìÊä³ö
-GPIO_Init(GPIOC,&amp;GPIO_InitStructure);//¹Ò½ÓÔÚPC¶Ë¿ÚÔòÔÚC¶Ë¿Ú
-GPIO_SetBits(GPIOC,GPIO_Pin_0|GPIO_Pin_2);
-GPIO_ResetBits(GPIOC,GPIO_Pin_1|GPIO_Pin_3);
-GPIO_PinRemapConfig(GPIO_FullRemap_TIM3,ENABLE);
-}
-
-2.#include &quot;way.h&quot;
-
-void way_stop()
-{    GPIO_ResetBits(GPIOC,GPIO_Pin_0|GPIO_Pin_1|GPIO_Pin_2|GPIO_Pin_3);
-}
-
-void way_up()
-{    GPIO_SetBits(GPIOC,GPIO_Pin_0|GPIO_Pin_2);//Õý×ª
-GPIO_ResetBits(GPIOC,GPIO_Pin_1|GPIO_Pin_3);
-}
-
-void way_down()
-{    GPIO_SetBits(GPIOC,GPIO_Pin_1|GPIO_Pin_3);
-GPIO_ResetBits(GPIOC,GPIO_Pin_0|GPIO_Pin_2);
-}
-
- void way_left()
-{    GPIO_SetBits(GPIOC,GPIO_Pin_1);
-GPIO_ResetBits(GPIOC,GPIO_Pin_0|GPIO_Pin_2|GPIO_Pin_3);
-}
-
- void way_right()
-{     GPIO_SetBits(GPIOC,GPIO_Pin_1|GPIO_Pin_2); //ÓÒ±ßÏòºó£¬×ó±ßÏòÇ°
- GPIO_ResetBits(GPIOC,GPIO_Pin_0|GPIO_Pin_3);
-}
-</code></pre><h3 id="主函数"><a href="#主函数" class="headerlink" title="主函数"></a>主函数</h3><pre><code> int main()
-{
-float temp1,temp2;//距离
-char DisNum[16];
-SystemInit();
-delay_init(72);
-pwm_init();
-Ultran1_Init();
-Ultran2_Init();
-way_up();
-delay_ms(60);//要加一个延迟，以防止初始化过快导致误差
-while(1)
-{
-
-      Ultra1_Ranging(&amp;temp1);//前置超声波
-      Ultra2_Ranging(&amp;temp2);//后置超声波
-        if(temp1 &gt; 50)//50cm
-        {    way_down();
-        }
-        if(temp2 &gt; 50)
-        {    way_up();
-        }    
-}
-
-}
 </code></pre>
       
     </div>
@@ -408,6 +314,10 @@ while(1)
       
       
 
+      
+        <p class="article-more-link">
+          <a  href="/2016/07/05/智能小车/#more">more >></a>
+        </p>
       
       <div class="clearfix"></div>
     </div>

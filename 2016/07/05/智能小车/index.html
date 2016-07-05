@@ -4,17 +4,36 @@
   <meta charset="utf-8">
   
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <title>Archives | Hexo</title>
+  <title>智能小车 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/archives/index.html">
+  <meta name="description" content="具有自动调整路线以及防坠落的智能小车
+超声波模块实现防坠落void Ultran1_Init(void)//前置超声波模块
+{
+GPIO_InitTypeDef GPIO_InitStructure;
+ RCC_APB2PeriphClockCmd(ULTRA_CLK, ENABLE);
+
+GPIO_InitStructure.GPIO_Pin =ULTRA1_TRIG;       //发送电平">
+<meta property="og:type" content="article">
+<meta property="og:title" content="智能小车">
+<meta property="og:url" content="http://yoursite.com/2016/07/05/智能小车/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description">
+<meta property="og:description" content="具有自动调整路线以及防坠落的智能小车
+超声波模块实现防坠落void Ultran1_Init(void)//前置超声波模块
+{
+GPIO_InitTypeDef GPIO_InitStructure;
+ RCC_APB2PeriphClockCmd(ULTRA_CLK, ENABLE);
+
+GPIO_InitStructure.GPIO_Pin =ULTRA1_TRIG;       //发送电平">
+<meta property="og:updated_time" content="2016-07-05T02:47:46.113Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
-<meta name="twitter:description">
+<meta name="twitter:title" content="智能小车">
+<meta name="twitter:description" content="具有自动调整路线以及防坠落的智能小车
+超声波模块实现防坠落void Ultran1_Init(void)//前置超声波模块
+{
+GPIO_InitTypeDef GPIO_InitStructure;
+ RCC_APB2PeriphClockCmd(ULTRA_CLK, ENABLE);
+
+GPIO_InitStructure.GPIO_Pin =ULTRA1_TRIG;       //发送电平">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -196,49 +215,175 @@
 	</div>
 </nav>
 
-      <div class="body-wrap">
+      <div class="body-wrap"><article id="post-智能小车" class="article article-type-post" itemscope itemprop="blogPost">
   
-  
-    
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2016" class="archive-year">2016</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/07/05/智能小车/" class="archive-article-date">
-  	<time datetime="2016-07-05T02:41:07.000Z" itemprop="datePublished">Jul 5</time>
+    <div class="article-meta">
+      <a href="/2016/07/05/智能小车/" class="article-date">
+  	<time datetime="2016-07-05T02:41:07.000Z" itemprop="datePublished">2016-07-05</time>
 </a>
-        </div>
-    	 
+    </div>
   
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/07/05/智能小车/">智能小车</a>
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      智能小车
     </h1>
   
 
-        <div class="article-info info-on-right">
-          
-          
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+        
 
-        </div>
         <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
-
+      </div>
+      
     
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="具有自动调整路线以及防坠落的智能小车"><a href="#具有自动调整路线以及防坠落的智能小车" class="headerlink" title="具有自动调整路线以及防坠落的智能小车"></a>具有自动调整路线以及防坠落的智能小车</h1><hr>
+<h3 id="超声波模块实现防坠落"><a href="#超声波模块实现防坠落" class="headerlink" title="超声波模块实现防坠落"></a>超声波模块实现防坠落</h3><pre><code>void Ultran1_Init(void)//前置超声波模块
+{
+GPIO_InitTypeDef GPIO_InitStructure;
+ RCC_APB2PeriphClockCmd(ULTRA_CLK, ENABLE);
+
+GPIO_InitStructure.GPIO_Pin =ULTRA1_TRIG;       //发送电平引脚
+ GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
+ GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;//推挽输出
+ GPIO_Init(ULTRA_PORT, &amp;GPIO_InitStructure);
+GPIO_ResetBits(ULTRA_PORT,ULTRA1_TRIG);
+
+GPIO_InitStructure.GPIO_Pin =ULTRA1_ECHO;        //接收电平引脚
+ GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
+ GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN_FLOATING;//浮空输入
+ GPIO_Init(ULTRA_PORT, &amp;GPIO_InitStructure);    
+}
+
+
+void Ultran2_Init(void)//后置超声波模块
+{
+GPIO_InitTypeDef GPIO_InitStructure;
+ RCC_APB2PeriphClockCmd(ULTRA_CLK, ENABLE);
+
+GPIO_InitStructure.GPIO_Pin =ULTRA2_TRIG;       
+ GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
+ GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;
+ GPIO_Init(ULTRA_PORT, &amp;GPIO_InitStructure);
+GPIO_ResetBits(ULTRA_PORT,ULTRA2_TRIG);
+
+GPIO_InitStructure.GPIO_Pin =ULTRA2_ECHO;        
+ GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
+ GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN_FLOATING;
+ GPIO_Init(ULTRA_PORT, &amp;GPIO_InitStructure);    
+}
+
+void Ultra1_Ranging(float *p)
+{
+u8 i;
+u32 j;
+float Ultr_Temp;    
+for(i=0;i&lt;3;i++)
+{
+    TRIG1_Send=1;
+    delay_ms(10);
+    TRIG1_Send=0;
+    while(!ECHO1_Reci);
+    while(ECHO1_Reci)
+    {
+        delay_us(10);
+        j++;
+    }
+    Ultr_Temp+=340/2*j;//最大测距距离3m
+    j=0;
+    delay_ms(60);//防止发射信号对回响信号的影响
+}
+*p=Ultr_Temp/3/1000;     //取三次平均值，减少误差cm
+}
+
+void Ultra2_Ranging(float *p)
+{
+u8 i;
+u32 j;
+float Ultr_Temp;    
+for(i=0;i&lt;3;i++)
+{
+    TRIG2_Send=1;
+    delay_ms(10);
+    TRIG2_Send=0;
+    while(!ECHO2_Reci);
+    while(ECHO2_Reci)
+    {
+        delay_us(10);
+        j++;
+    }
+    Ultr_Temp+=340/2*j;
+    j=0;
+    delay_ms(60);
+}
+*p=Ultr_Temp/3/1000;     
+}
+</code></pre>
+      
+    </div>
+    
+  </div>
+  
+    
+  
+</article>
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">Share to: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+    <a class="jiathis_button_twitter"></a>
+    <a class="jiathis_button_plus"></a> 
+    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="智能小车" data-title="智能小车" data-url="http://yoursite.com/2016/07/05/智能小车/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
 
 </div>
       <footer id="footer">
@@ -264,8 +409,8 @@
 		mathjax: true,
 		animate: true,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false

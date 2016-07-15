@@ -77,7 +77,7 @@
 						<li>Links</li>
 						
 						
-						<li>About</li>
+						<li>A propos</li>
 						
 					</ul>
 				</div>
@@ -224,8 +224,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="huffman压缩"><a href="#huffman压缩" class="headerlink" title="huffman压缩"></a>huffman压缩</h1><pre><code>心得：在huffman.h中有一个encode()函数，其中定义了一个MyString类的变量str,但是给它赋好值return的时候就会出错，百思不得其解。问过老师，老师说是没有深拷贝。可我mystring中写了深拷贝。后来看C专家编程，看到P49的时候就懂。是因为当控制流离开局部变量的范围时，自动变量便自动失效，这就意味着即使返回一个指向局部变量的指针，当函数结束时，变量被销毁，谁也不知道这个指针所指向的地址内容是什么。只要将这个变量设置为static就能解决这个问题。
-</code></pre>
+        <h1 id="huffman压缩"><a href="#huffman压缩" class="headerlink" title="huffman压缩"></a>huffman压缩</h1><p>心得：在huffman.h中有一个encode()函数，其中定义了一个MyString类的变量str,但是给它赋好值return的时候就会出错，百思不得其解。问过老师，老师说是没有深拷贝。可我mystring中写了深拷贝。后来看C专家编程，看到P49的时候就懂。是因为当控制流离开局部变量的范围时，自动变量便自动失效，这就意味着即使返回一个指向局部变量的指针，当函数结束时，变量被销毁，谁也不知道这个指针所指向的地址内容是什么。只要将这个变量设置为static就能解决这个问题。</p>
       
     </div>
     
@@ -281,8 +280,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="防坠落智能小车"><a href="#防坠落智能小车" class="headerlink" title="防坠落智能小车"></a>防坠落智能小车</h1><pre><code>心得:硬件设计需要细心，特别要注意各引脚和时钟的关系。有时候在两个不同头文件重复定义的相同引脚，会导致功能失效。另外可以用Led灯输出状态，这也是一个小技巧。
-</code></pre>
+        <h1 id="防坠落智能小车"><a href="#防坠落智能小车" class="headerlink" title="防坠落智能小车"></a>防坠落智能小车</h1><p>心得:硬件设计需要细心，特别要注意各引脚和时钟的关系。有时候在两个不同头文件重复定义的相同引脚，会导致功能失效。另外可以用Led灯输出状态，这也是一个小技巧。</p>
       
     </div>
     

@@ -198,6 +198,63 @@
 
       <div class="body-wrap">
   
+    <article id="post-huffman压缩" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/07/15/huffman压缩/" class="article-date">
+  	<time datetime="2016-07-15T07:32:12.000Z" itemprop="datePublished">2016-07-15</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/07/15/huffman压缩/">huffman压缩</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="huffman压缩"><a href="#huffman压缩" class="headerlink" title="huffman压缩"></a>huffman压缩</h1><pre><code>心得：在huffman.h中有一个encode()函数，其中定义了一个MyString类的变量str,但是给它赋好值return的时候就会出错，百思不得其解。问过老师，老师说是没有深拷贝。可我mystring中写了深拷贝。后来看C专家编程，看到P49的时候就懂。是因为当控制流离开局部变量的范围时，自动变量便自动失效，这就意味着即使返回一个指向局部变量的指针，当函数结束时，变量被销毁，谁也不知道这个指针所指向的地址内容是什么。只要将这个变量设置为static就能解决这个问题。
+</code></pre>
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a  href="/2016/07/15/huffman压缩/#more">more >></a>
+        </p>
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-智能小车" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">

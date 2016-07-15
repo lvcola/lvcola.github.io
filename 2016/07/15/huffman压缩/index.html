@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>huffman压缩 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="huffman压缩心得：在huffman.h中有一个encode()函数，其中定义了一个MyString类的变量str,但是给它赋好值return的时候就会出错，百思不得其解。问过老师，老师说是没有深拷贝。可我mystring中写了深拷贝。后来看C专家编程，看到P49的时候就懂。是因为当控制流离开局部变量的范围时，自动变量便自动失效，这就意味着即使返回一个指向局部变量的指针，当函数结束时，变量被销">
+<meta property="og:type" content="article">
+<meta property="og:title" content="huffman压缩">
+<meta property="og:url" content="http://yoursite.com/2016/07/15/huffman压缩/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="huffman压缩心得：在huffman.h中有一个encode()函数，其中定义了一个MyString类的变量str,但是给它赋好值return的时候就会出错，百思不得其解。问过老师，老师说是没有深拷贝。可我mystring中写了深拷贝。后来看C专家编程，看到P49的时候就懂。是因为当控制流离开局部变量的范围时，自动变量便自动失效，这就意味着即使返回一个指向局部变量的指针，当函数结束时，变量被销">
+<meta property="og:updated_time" content="2016-07-15T08:00:44.313Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="huffman压缩">
+<meta name="twitter:description" content="huffman压缩心得：在huffman.h中有一个encode()函数，其中定义了一个MyString类的变量str,但是给它赋好值return的时候就会出错，百思不得其解。问过老师，老师说是没有深拷贝。可我mystring中写了深拷贝。后来看C专家编程，看到P49的时候就懂。是因为当控制流离开局部变量的范围时，自动变量便自动失效，这就意味着即使返回一个指向局部变量的指针，当函数结束时，变量被销">
+  
+    <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="null" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Lvcola</a></h1>
+		</hgroup>
+
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						<div class="icon-wrap icon-link hide" data-idx="2">
+							<div class="loopback_l"></div>
+							<div class="loopback_r"></div>
+						</div>
+						
+						
+						<div class="icon-wrap icon-me hide" data-idx="3">
+							<div class="user"></div>
+							<div class="shoulder"></div>
+						</div>
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>Menu</li>
+						<li>Tags</li>
+						
+						<li>Links</li>
+						
+						
+						<li>About</li>
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/lvcola/lvcola.github.io" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="#" title="weibo">weibo</a>
+					        
+								<a class="rss" target="_blank" href="#" title="rss">rss</a>
+					        
+								<a class="zhihu" target="_blank" href="https://www.zhihu.com/" title="zhihu">zhihu</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						
+					</div>
+				</section>
+				
+				
+				
+				<section class="switch-part switch-part3">
+					<div id="js-friends">
+					
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">奥巴马的博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">卡卡的美丽传说</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">本泽马的博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">吉格斯的博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">习大大大不同</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">托蒂的博客</a>
+			        
+			        </div>
+				</section>
+				
+
+				
+				
+				<section class="switch-part switch-part4">
+				
+					<div id="js-aboutme">待我十二块腹肌，嫁给我可好</div>
+				</section>
+				
+			</div>
+		</div>
+	</header>				
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">Lvcola</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+			
+				<img lazy-src="null" class="js-avatar">
+			
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Lvcola</h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/lvcola/lvcola.github.io" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="#" title="weibo">weibo</a>
+			        
+						<a class="rss" target="_blank" href="#" title="rss">rss</a>
+			        
+						<a class="zhihu" target="_blank" href="https://www.zhihu.com/" title="zhihu">zhihu</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-huffman压缩" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/07/15/huffman压缩/" class="article-date">
+  	<time datetime="2016-07-15T07:32:12.000Z" itemprop="datePublished">2016-07-15</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      huffman压缩
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+        
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="huffman压缩"><a href="#huffman压缩" class="headerlink" title="huffman压缩"></a>huffman压缩</h1><pre><code>心得：在huffman.h中有一个encode()函数，其中定义了一个MyString类的变量str,但是给它赋好值return的时候就会出错，百思不得其解。问过老师，老师说是没有深拷贝。可我mystring中写了深拷贝。后来看C专家编程，看到P49的时候就懂。是因为当控制流离开局部变量的范围时，自动变量便自动失效，这就意味着即使返回一个指向局部变量的指针，当函数结束时，变量被销毁，谁也不知道这个指针所指向的地址内容是什么。只要将这个变量设置为static就能解决这个问题。
+</code></pre> <a id="more"></a>
+<hr>
+<h2 id="huffman-h"><a href="#huffman-h" class="headerlink" title="huffman.h"></a>huffman.h</h2><pre><code>#ifndef _HuffmanTree_H
+#define _HuffmanTree_H
+#include &lt;fstream&gt;
+#include &quot;Seqlist.h&quot;
+#include &quot;Mystring.h&quot;
+#include &quot;TriElement.h&quot;
+
+class HuffmanTree
+{
+ protected:
+    MyString charset;//字符集
+    Seqlist&lt;TriElement&gt;huftree;
+    void encode(int i); //单解码
+   public:
+    HuffmanTree(MyString &amp;m,int weight[],int n);
+    void printCode();
+    MyString encode(MyString &amp; text);//编码，压缩
+    void decode();//译码，解压缩
+
+};
+
+
+
+HuffmanTree::HuffmanTree(MyString &amp;m,int weight[], int n)//字符集，权值，长度
+    :huftree(2*n-1)
+{
+    for (int i = 0; i &lt; n; i++)
+    {
+        this-&gt;charset.insert(i,m[i]);
+        this-&gt;huftree.insert(TriElement(weight[i], -1, -1, -1));
+    }
+
+    for (int i = 0; i &lt; n - 1; i++)
+    {
+        int min1 = 0x7fffffff, min2 = min1, x1 = 0, x2 = x1;
+        for (int j = 0; j &lt; n + i;j++)
+            if (huftree[j].parent == -1 &amp;&amp; huftree[j].data &lt; min1)
+            {
+                min2 = min1;
+                x2 = x1;
+                min1 = huftree[j].data;
+                x1 = j;
+            }
+            else if (huftree[j].parent == -1 &amp;&amp; huftree[j].data &lt; min2)
+                {
+                    min2 = huftree[j].data;
+                    x2 = j;
+                }
+
+        huftree[x1].parent = n + i;
+        huftree[x2].parent = n + i;
+        huftree.insert(TriElement(huftree[x1].data + huftree[x2].data, -1, x1, x2));
+    }
+    cout &lt;&lt; &quot;Huffman 树的结点顺序表：&quot; &lt;&lt; this-&gt;huftree;
+}
+void  HuffmanTree::encode(int i)
+{    MyString str;
+    int child = i,parent = huftree[child].parent;//已经重载下标,huftree[i]是哈夫曼第i个
+    while(parent != -1)//不是根节点
+    {    if(huftree[parent].left == child)//是左子树
+            str+=&apos;0&apos;;
+        else
+            str+=&apos;1&apos;;
+        child = parent;
+        parent = huftree[child].parent;
+    }
+    str.reverse();//反转字符串
+    cout&lt;&lt;str&lt;&lt;&quot;,&quot;;//临时的方法，按书上会出现一个问题
+
+}
+
+void HuffmanTree::printCode()
+{    
+    cout &lt;&lt; &quot;Huffman 编码，&quot;;
+    for (int i = 0; i &lt; this-&gt;charset.count(); i++)
+    {    
+        cout &lt;&lt; this-&gt;charset[i] &lt;&lt; &quot;：&quot;;
+        //cout&lt;&lt;str&lt;&lt;&quot;,&quot;;
+        encode(i) ;
+    }
+    cout &lt;&lt; endl;
+}
+
+MyString HuffmanTree::encode(MyString &amp;text)
+{    static MyString codestr;
+    ofstream fout;
+    int child ,parent;//已经重载下标,huftree[i]是哈夫曼第i个
+    int i,j;
+    for(i = 0;i&lt;text.count();i++)
+    {    MyString str;
+        for(j = 0;j &lt; this-&gt;charset.count();j++)
+            if(text[i] == this-&gt;charset[j])
+                break;//此时j就是该字符在哈夫曼树中的位置
+        child = j;
+        parent = huftree[child].parent;
+        while(parent != -1)//不是根节点
+        {    if(huftree[parent].left == child)//是左子树
+                str+=&apos;0&apos;;
+            else
+                str+=&apos;1&apos;;
+            child = parent;
+            parent = huftree[child].parent;
+        }
+        str.reverse();//反转字符串
+        codestr += str;
+    }
+    //cout&lt;&lt;&quot;压缩后为：&quot;&lt;&lt;codestr;//临时的方法，按书上会出现一个问题
+    //cout&lt;&lt;&quot;压缩比为&quot;&lt;&lt;codestr.count()&lt;&lt;&quot;:&quot;&lt;&lt;text.count()*8;//需要改，要改成浮点数
+    fout.open(&quot;c://2.txt&quot;);
+    fout&lt;&lt;codestr;
+    fout.close();
+    return codestr;
+}
+
+void HuffmanTree::decode()
+{
+    char s[1000];//源文档中字符信息
+    ifstream fin;//
+    fin.open(&quot;c://2.txt&quot;);//从C盘1.txt中读取文件信息
+    fin &gt;&gt; s;//把文件中信息读入字符串s中
+    MyString bef_text(s);//压缩后的字符信息
+    fin.close();
+
+    MyString af_text;
+
+    int node = this-&gt;huftree.count() - 1;
+    for (int i = 0; i &lt; bef_text.count(); i++)
+    {
+        if (bef_text[i] == &apos;0&apos;)
+            node = huftree[node].left;
+        else node = huftree[node].right;
+        if (huftree[node].leaf())
+        {
+            af_text += this-&gt;charset[node];
+            node = this-&gt;huftree.count() - 1;
+        }
+    }
+    cout&lt;&lt;&quot;解码为&quot;&lt;&lt;af_text&lt;&lt;endl;
+}
+
+
+#endif
+</code></pre><h2 id="main"><a href="#main" class="headerlink" title="main"></a>main</h2><pre><code>#include &lt;iostream&gt;
+using namespace std;
+#include &quot;HuffmanTree.h&quot;
+
+
+/*采用Huffman编码进行文件压缩。给定一个文本文件，统计其中字符使用频率，
+建立一棵Huffman树，采用变长的二进制位串表示字符的Huffman编码，计算压缩比。再对经Huffman编码压缩的文本进行译码。
+*/
+int main()
+{    
+
+    /*readtxt*/
+    MyString charj,code;//字符集,编码后的文件
+    int *qz,length;//权值,以及字符集个数
+    int qqz[100];
+    char s[1000];//源文档中字符信息
+    ifstream fin;//
+    fin.open(&quot;c://1.txt&quot;);//从C盘1.txt中读取文件信息
+    fin &gt;&gt; s;//把文件中信息读入字符串s中
+    MyString m(s);//压缩后的字符信息,原文件大小即为m.n
+    fin.close();
+    cout&lt;&lt;&quot;文件中信息为&quot;&lt;&lt;m&lt;&lt;endl;
+
+    qz =  m.charest(charj);//charj存放字符集，qz数组存放权值
+    cout&lt;&lt;&quot;字符集为&quot;&lt;&lt;charj&lt;&lt;endl;
+    cout&lt;&lt;&quot;权值为&quot;;
+    length = charj.count();
+    for(int i = 0;i &lt; length;i++)
+    {    qqz[i] = *qz;
+        cout&lt;&lt;*qz&lt;&lt;&quot; &quot;;
+        qz++;    
+    }    
+    cout&lt;&lt;endl;
+    HuffmanTree huf(charj,qqz,length);
+    huf.printCode();
+    cout&lt;&lt;&quot;压缩后为：&quot;&lt;&lt;huf.encode(m);
+    huf.decode();
+
+
+    system(&quot;pause&quot;);
+
+
+    return 0;
+}
+</code></pre><h2 id="Mystring-h"><a href="#Mystring-h" class="headerlink" title="Mystring.h"></a>Mystring.h</h2><pre><code>#ifndef _Mystring_H
+#define _Mystring_H
+
+#include &lt;exception&gt;
+#include &lt;string.h&gt;
+
+class MyString                                                                
+{
+protected:                                                                                                                    
+    char *element;                    
+    int length;                                                                    
+    int n;        //原字符串容量,后期可改进
+private:
+    void init(char *s = &quot;&quot;);                            
+public:
+
+    MyString(char *s=&quot;&quot;);
+    MyString(char ch);
+    ~MyString();
+
+    MyString&amp; operator=(MyString &amp;str);    //深拷贝
+    void operator+=(char ch);
+    void operator+=(MyString &amp;str);    
+    void operator+=(char *str);    
+    char&amp; operator[](int i);
+    void reverse();    
+    friend ostream&amp; operator&lt;&lt;(ostream &amp;, MyString &amp;str);
+    void print();
+
+    void insert(int i,char ch);    //在第i位插入ch字符
+    void insert(int i,MyString &amp;str);    
+
+    int *charest(MyString &amp; mm);//建立字符集
+
+    int count();//返回串长度
+
+};
+
+void MyString::init(char *str)
+{    int i;
+    this-&gt;n = strlen(str);
+    this-&gt;length = (n*2)&gt;32?(n*2):32;\
+    this-&gt;element = new char[this-&gt;length];
+    for(i = 0;i &lt; this-&gt;n ; i++)
+        this-&gt;element[i] = str[i];
+    this-&gt;element[i] = &apos;\0&apos;;
+
+}
+MyString::MyString(char *str)
+{    this-&gt;init(str);
+}
+MyString::MyString(char ch)
+{
+    this-&gt;init(&quot;&quot;);
+    this-&gt;n = 1;
+    this-&gt;element[0] = ch;
+    this-&gt;element[1] = &apos;\0&apos;;
+}
+
+ostream&amp; operator&lt;&lt;(ostream&amp; out, MyString&amp; str)
+{    
+    out &lt;&lt; str.element ;
+    return out;
+}
+
+void MyString::print()
+{    for(int i;i &lt; this-&gt;n;i++)
+        cout&lt;&lt;this-&gt;element[i];
+}
+
+MyString&amp; MyString::operator=(MyString&amp; str)
+{
+    this-&gt;~MyString();
+    this-&gt;init(str.element);
+    return *this;
+}
+
+
+
+void MyString::operator+=(MyString&amp; str)
+{
+    int m = str.count();
+    if ((m + this-&gt;n) * 2 &gt; this-&gt;length)
+    {
+        this-&gt;length = (m + this-&gt;n) * 2;
+        char* temp = this-&gt;element;
+        this-&gt;element = new char[this-&gt;length];
+        for (int i = 0; temp[i] != &apos;\0&apos;; i++)
+            this-&gt;element[i] = temp[i];
+    }
+    for (int i = 0; i&lt;m; i++)
+        this-&gt;element[this-&gt;n + i] = str[i];
+    this-&gt;n += m;
+    this-&gt;element[this-&gt;n] = &apos;\0&apos;;
+}
+void MyString::operator+=(char* str)
+{
+    int m = strlen(str);
+    if ((m + this-&gt;n) * 2 &gt; length)
+    {
+        this-&gt;length = (m + this-&gt;n) * 2;
+        char* temp = this-&gt;element;
+        this-&gt;element = new char[this-&gt;length];
+        for (int i = 0; temp[i] != &apos;\0&apos;; i++)
+            this-&gt;element[i] = temp[i];
+    }
+    for (int i = 0; str[i] != &apos;\0&apos;; i++)
+        this-&gt;element[this-&gt;n + i] = str[i];
+    this-&gt;n += m;
+    this-&gt;element[this-&gt;n] = &apos;\0&apos;;
+}
+
+void MyString::operator+=(char ch)
+{
+    this-&gt;n += 1;
+    if (this-&gt;n * 2 &gt; this-&gt;length)
+    {
+        this-&gt;length = this-&gt;n * 2;
+        char* temp = this-&gt;element;
+        this-&gt;element = new char[this-&gt;length];
+        for (int i = 0; temp[i] != &apos;\0&apos;; i++)
+            this-&gt;element[i] = temp[i];
+    }
+    this-&gt;element[n - 1] = ch;
+    this-&gt;element[n] = &apos;\0&apos;;
+}
+
+char&amp; MyString::operator[](int i)
+{
+    if (i &gt;= 0 &amp;&amp; i &lt;= this-&gt;n&amp;&amp;this-&gt;length &gt;= 0)
+        return this-&gt;element[i];
+    else throw out_of_range(&quot;参数i指定字符序号或len超出范围&quot;);
+}
+
+
+void MyString::reverse()
+{
+    char temp;
+    for (int i = 0; i &lt; (this-&gt;n - 1) / 2; i++)
+    {
+        temp = this-&gt;element[i];
+        this-&gt;element[i] = this-&gt;element[n - i - 1];
+        this-&gt;element[n - i - 1] = temp;
+    }
+}
+void MyString::insert(int i, char ch)
+{
+    this-&gt;insert(i,MyString(ch));
+}
+void MyString::insert(int i, MyString&amp; str)
+{
+    if (str.n == 0)
+        return;
+    if (i &lt; 0)
+        i = 0;
+    if (i &gt; n)
+        i = n;
+    char* temp = this-&gt;element;
+    if (this-&gt;length &lt;= this-&gt;n + str.n)
+    {
+        this-&gt;length = (this-&gt;n + str.n + 1) * 2;
+        this-&gt;element = new char[this-&gt;length];
+        for (int j = 0; j &lt; i; j++)
+            this-&gt;element[j] = temp[j];
+    }
+    for (int j = this-&gt;n; j &gt;= i; j--)
+        this-&gt;element[j + str.n] = temp[j];
+    if (temp != this-&gt;element)
+        delete[] temp;
+    for (int j = 0; j &lt; str.n; j++)
+        this-&gt;element[i + j] = str.element[j];
+    this-&gt;n += str.n;
+}
+
+int * MyString::charest(MyString &amp; mm)
+{    
+    int i,j,temp = 0;
+    for(i = 0;i &lt; this-&gt;n; i++)
+    {    for(j = 0;j &lt; mm.n;j++)
+            if(this-&gt;element[i] == mm.element[j])//在字符集中存在
+                break;
+        if(j == mm.n)//不存在
+            mm.insert(j,this-&gt;element[i]);
+
+
+    }
+    int * a = new int[this-&gt;n];//遍历寻找每个字符集中字符的权值，以后可以改进算法
+    for(i = 0;i &lt; mm.n;i++)
+    {    for(j = 0;j &lt; this-&gt;n;j++)
+        {    if(mm.element[i] == this-&gt;element[j])
+                temp++;
+        }
+        a[i] = temp;
+        temp = 0;
+    }
+    return a;
+
+}
+
+
+MyString::~MyString()
+{
+    delete[] element;
+}
+
+int MyString::count()
+{    return this-&gt;n;
+}
+
+#endif
+</code></pre><h2 id="SeqList-h"><a href="#SeqList-h" class="headerlink" title="SeqList.h"></a>SeqList.h</h2><pre><code>#ifndef _Seqlist_H
+#define _Seqlist_H
+#include &lt;exception&gt;//C++异常类
+
+template &lt;class T&gt;
+class Seqlist
+{protected:
+    T *element;
+    int length;//顺序表数组容量
+    int n;//顺序表元素个数
+private:
+    void init(T values[],int n);
+public:
+    Seqlist(int length = 32);    
+    Seqlist(T values[],int n);
+    ~Seqlist();
+    void insert(int i,T x);
+    void insert(T x);
+    T&amp; operator[](int i);
+    friend ostream&amp; operator&lt;&lt;&lt;&gt;(ostream&amp; , Seqlist&lt;T&gt;&amp;);
+    int count();
+
+};
+
+template &lt;class T&gt;
+Seqlist&lt;T&gt;::Seqlist(int length)                                
+{
+    this-&gt;element = new T[length];                            
+    this-&gt;length = length;
+    this-&gt;n = 0;                                            
+}
+
+template &lt;class T&gt;
+Seqlist&lt;T&gt;::Seqlist(T values[],int n)
+{    this-&gt;init(values,n);
+}
+template &lt;class T&gt;
+void Seqlist&lt;T&gt;::init(T values[],int n)
+{    this-&gt;length =(((n * 2) &gt; 32) ? (n*2) : 32 );//取2*n或者32最大值
+    this-&gt;element = new T[this-&gt;length];
+    this-&gt;n = n;
+    for(int i = 0;i &lt;n;i++)
+        this-&gt;element[i] = values[i];
+}
+
+
+template &lt;class T&gt;
+void Seqlist&lt;T&gt;::insert(int i ,T x)//见书P31
+{    T *temp = this-&gt;element;
+    if(this-&gt;n==this-&gt;length)//若数组满则扩充数组容量
+    {    this-&gt;length *=2;
+        this-&gt;element = new T[this-&gt;length];
+        for(int j = 0;j&lt;i;j++)
+            this-&gt;element[j] = temp[j];
+    }
+    for(int j = this-&gt;n-1 ;j &gt;= i;j--)
+        this-&gt;element[j+1] = temp[j];
+    if(temp!=this-&gt;element)
+        delete[] temp;
+    this-&gt;element[i] = x;
+    this-&gt;n++;
+}
+
+template &lt;class T&gt;
+void Seqlist&lt;T&gt;::insert(T x)
+{    insert(this-&gt;n,x);
+}
+
+
+
+template &lt;class T&gt;
+Seqlist&lt;T&gt;::~Seqlist()
+{    delete[] this-&gt;element;
+}
+
+template &lt;class T&gt;
+T&amp; Seqlist&lt;T&gt;::operator[](int i)
+{    if(i &gt;= 0 &amp;&amp; i &lt; this-&gt;n)
+        return this-&gt;element[i];
+    throw out_of_range(&quot;参数i超出下标范围&quot;);
+}
+template &lt;class T&gt;
+ostream&amp; operator&lt;&lt;&lt;&gt;(ostream &amp; out,Seqlist&lt;T&gt;&amp; s)
+{    out&lt;&lt;&quot;(&quot;;
+    if(s.n &gt; 0)
+        out&lt;&lt;s.element[0];
+    for(int i = 1;i &lt; s.n;i++)
+        out&lt;&lt;&quot;,&quot;&lt;&lt;s.element[i];
+    out&lt;&lt;&quot;)&quot;&lt;&lt;endl;
+    return out;
+}
+
+template &lt;class T&gt;
+int Seqlist&lt;T&gt;::count()
+{    return this-&gt;n;
+}
+
+#endif
+</code></pre><h2 id="TriElement-h"><a href="#TriElement-h" class="headerlink" title="TriElement.h"></a>TriElement.h</h2><pre><code>#ifndef _TriElement_H
+#define _TriElement_H
+
+class TriElement
+{public:
+    int data,parent,left,right;
+    TriElement(int data = 0,int parent = -1,int left = -1,int right = -1)
+    {    this-&gt;data = data;
+        this-&gt;parent = parent;
+        this-&gt;left = left;
+        this-&gt;right = right;
+    }
+    friend std::ostream&amp; operator&lt;&lt;(std::ostream&amp; out,TriElement e)
+    {    out&lt;&lt;&quot;(&quot;&lt;&lt;e.data&lt;&lt;&quot;,&quot;&lt;&lt;e.parent&lt;&lt;&quot;,&quot;&lt;&lt;e.left&lt;&lt;&quot;,&quot;&lt;&lt;e.right&lt;&lt;&quot;)&quot;;
+        return out;
+    }
+    bool leaf()//是否为叶子结点
+    {    if(this-&gt;left == -1 &amp;&amp; this-&gt;right == -1)
+            return true;
+        return false;
+    }
+    bool operator==(TriElement &amp;e)//比较相等
+    {    if(this-&gt;data == e.data)
+            return true;
+        return false;
+    }
+
+
+};
+#endif
+</code></pre>
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2016/07/05/智能小车/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">智能小车</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">Share to: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+    <a class="jiathis_button_twitter"></a>
+    <a class="jiathis_button_plus"></a> 
+    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="huffman压缩" data-title="huffman压缩" data-url="http://yoursite.com/2016/07/15/huffman压缩/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 Lvcola
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>

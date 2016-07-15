@@ -33,7 +33,7 @@
 	<header id="header" class="inner">
 		<a href="/" class="profilepic">
 			
-			<img src="http://o8yrrj7hr.bkt.clouddn.com/psb.jpg" class="js-avatar" style="width: 100%;height: 100%;opacity: 1;">
+			<img lazy-src="http://o8yrrj7hr.bkt.clouddn.com/psb.jpg" class="js-avatar">
 			
 		</a>
 
@@ -91,9 +91,9 @@
 					<nav class="header-menu">
 						<ul>
 						
-							<li><a href="/">��ҳ</a></li>
+							<li><a href="/">主页</a></li>
 				        
-							<li><a href="/archives">��������</a></li>
+							<li><a href="/archives">所有文章</a></li>
 				        
 						</ul>
 					</nav>
@@ -102,7 +102,9 @@
 							
 								<a class="github" target="_blank" href="https://github.com/lvcola/lvcola.github.io" title="github">github</a>
 					        
-								<a class="zhihu" target="_blank" href="/zhihu.com/people/xu-wen-jian-52" title="zhihu">zhihu</a>
+								<a class="weibo" target="_blank" href="#" title="weibo">weibo</a>
+					        
+								<a class="zhihu" target="_blank" href="https://www.zhihu.com/" title="zhihu">zhihu</a>
 					        
 								<a class="mail" target="_blank" href="/583159685@qq.com" title="mail">mail</a>
 					        
@@ -122,9 +124,17 @@
 				<section class="switch-part switch-part3">
 					<div id="js-friends">
 					
-			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">�°����Ĳ���</a>
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">奥巴马的博客</a>
 			        
-			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">������������˵</a>
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">卡卡的美丽传说</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">本泽马的博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">吉格斯的博客</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">习大大大不同</a>
+			        
+			          <a target="_blank" class="main-nav-link switch-friends-link" href="http://localhost:4000/">托蒂的博客</a>
 			        
 			        </div>
 				</section>
@@ -134,7 +144,7 @@
 				
 				<section class="switch-part switch-part4">
 				
-					<div id="js-aboutme">����ʮ���鸹�����޸��ҿɺ�</div>
+					<div id="js-aboutme">待我十二块腹肌，嫁给我可好</div>
 				</section>
 				
 			</div>
@@ -153,7 +163,7 @@
 		<header id="header" class="inner">
 			<div class="profilepic">
 			
-				<img src="http://o8yrrj7hr.bkt.clouddn.com/psb.jpg" class="js-avatar" style="width: 100%;height: 100%;opacity: 1;">
+				<img lazy-src="http://o8yrrj7hr.bkt.clouddn.com/psb.jpg" class="js-avatar">
 			
 			</div>
 			<hgroup>
@@ -163,9 +173,9 @@
 			<nav class="header-menu">
 				<ul>
 				
-					<li><a href="/">��ҳ</a></li>
+					<li><a href="/">主页</a></li>
 		        
-					<li><a href="/archives">��������</a></li>
+					<li><a href="/archives">所有文章</a></li>
 		        
 		        <div class="clearfix"></div>
 				</ul>
@@ -175,7 +185,9 @@
 					
 						<a class="github" target="_blank" href="https://github.com/lvcola/lvcola.github.io" title="github">github</a>
 			        
-						<a class="zhihu" target="_blank" href="/zhihu.com/people/xu-wen-jian-52" title="zhihu">zhihu</a>
+						<a class="weibo" target="_blank" href="#" title="weibo">weibo</a>
+			        
+						<a class="zhihu" target="_blank" href="https://www.zhihu.com/" title="zhihu">zhihu</a>
 			        
 						<a class="mail" target="_blank" href="/583159685@qq.com" title="mail">mail</a>
 			        
@@ -766,6 +778,25 @@ class TriElement
 </article>
 
 
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">Share to: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+    <a class="jiathis_button_twitter"></a>
+    <a class="jiathis_button_plus"></a> 
+    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
 
 
 
@@ -814,13 +845,13 @@ class TriElement
 	var yiliaConfig = {
 		fancybox: true,
 		mathjax: true,
-		animate: undefined,
+		animate: true,
 		isHome: false,
 		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
-		open_in_new: undefined
+		open_in_new: false
 	}
 </script>
 <script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>

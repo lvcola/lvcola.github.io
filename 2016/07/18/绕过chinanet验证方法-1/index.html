@@ -4,17 +4,18 @@
   <meta charset="utf-8">
   
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <title>Archives | Hexo</title>
+  <title>绕过chinanet验证方法 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/archives/index.html">
+  <meta name="description" content="前言   最近一直在用chinanet手机验证免费上网。但是因为chinanet有免费时长，往往在需要的时候上不了网。我注意到，当免费时长用完网页打不开会自动跳转到chinanet验证，但是QQ能上网。很奇怪，决定了解下计算机无线网络的原理，找找有没有机会绕过chinanet的验证照常登录一些常用网站。  后来百度了一些资料，发现QQ能上是因为QQ不需要dns解析，那这样子就好办了，和小伙伴讨论了">
+<meta property="og:type" content="article">
+<meta property="og:title" content="绕过chinanet验证方法">
+<meta property="og:url" content="http://yoursite.com/2016/07/18/绕过chinanet验证方法-1/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description">
+<meta property="og:description" content="前言   最近一直在用chinanet手机验证免费上网。但是因为chinanet有免费时长，往往在需要的时候上不了网。我注意到，当免费时长用完网页打不开会自动跳转到chinanet验证，但是QQ能上网。很奇怪，决定了解下计算机无线网络的原理，找找有没有机会绕过chinanet的验证照常登录一些常用网站。  后来百度了一些资料，发现QQ能上是因为QQ不需要dns解析，那这样子就好办了，和小伙伴讨论了">
+<meta property="og:updated_time" content="2016-07-18T03:48:19.711Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
-<meta name="twitter:description">
+<meta name="twitter:title" content="绕过chinanet验证方法">
+<meta name="twitter:description" content="前言   最近一直在用chinanet手机验证免费上网。但是因为chinanet有免费时长，往往在需要的时候上不了网。我注意到，当免费时长用完网页打不开会自动跳转到chinanet验证，但是QQ能上网。很奇怪，决定了解下计算机无线网络的原理，找找有没有机会绕过chinanet的验证照常登录一些常用网站。  后来百度了一些资料，发现QQ能上是因为QQ不需要dns解析，那这样子就好办了，和小伙伴讨论了">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -196,103 +197,117 @@
 	</div>
 </nav>
 
-      <div class="body-wrap">
+      <div class="body-wrap"><article id="post-绕过chinanet验证方法-1" class="article article-type-post" itemscope itemprop="blogPost">
   
+    <div class="article-meta">
+      <a href="/2016/07/18/绕过chinanet验证方法-1/" class="article-date">
+  	<time datetime="2016-07-18T03:31:25.000Z" itemprop="datePublished">2016-07-18</time>
+</a>
+    </div>
   
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
     
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      绕过chinanet验证方法
+    </h1>
+  
+
+      </header>
       
+      <div class="article-info article-info-post">
+        
+        
+
+        <div class="clearfix"></div>
+      </div>
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2016" class="archive-year">2016</a>
-        </div>
-        <div class="archives">
     
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/07/18/绕过chinanet验证方法-1/" class="archive-article-date">
-  	<time datetime="2016-07-18T03:31:25.000Z" itemprop="datePublished">Jul 18</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/07/18/绕过chinanet验证方法-1/">绕过chinanet验证方法</a>
-    </h1>
-  
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>   最近一直在用chinanet手机验证免费上网。但是因为chinanet有免费时长，往往在需要的时候上不了网。我注意到，当免费时长用完网页打不开会自动跳转到chinanet验证，但是QQ能上网。很奇怪，决定了解下计算机无线网络的原理，找找有没有机会绕过chinanet的验证照常登录一些常用网站。  后来百度了一些资料，发现QQ能上是因为QQ不需要dns解析，那这样子就好办了，和小伙伴讨论了一下，总结出来两种方法。</p>
+<h2 id="修改hosts文件夹"><a href="#修改hosts文件夹" class="headerlink" title="修改hosts文件夹"></a>修改hosts文件夹</h2><p>通过修改C:\Windows\System32\drivers\etc下的hosts，在自己电脑里建立一个关联数据库，把ping到的ip以及网址放入其中，这样子就能绕过dns解析。具体格式如下</p>
+<pre><code># Modified hosts start
 
-        <div class="article-info info-on-right">
-          
-          
+# xwj start
+220.181.57.217 www.baidu.com
+223.6.249.240  www.newcoder.com
+# xwj end
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
+# Modified hosts end
+</code></pre><h2 id="直接设置静态dns"><a href="#直接设置静态dns" class="headerlink" title="直接设置静态dns"></a>直接设置静态dns</h2><p>114开头的dns多是基础电信运营商自用的DNS系统，修改dns看看chinanet是否傻逼没有封别人的dns</p>
+<hr>
+<p> 持续更新，今天中午等免费时长用完试一试</p>
+
+      
+    </div>
+    
   </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2016/07/15/huffman压缩/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">huffman压缩</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/07/15/huffman压缩/" class="archive-article-date">
-  	<time datetime="2016-07-15T07:32:12.000Z" itemprop="datePublished">Jul 15</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/07/15/huffman压缩/">huffman压缩</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/07/05/智能小车/" class="archive-article-date">
-  	<time datetime="2016-07-05T02:41:07.000Z" itemprop="datePublished">Jul 5</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/07/05/智能小车/">智能小车</a>
-    </h1>
-  
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">分享到: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+    <a class="jiathis_button_twitter"></a>
+    <a class="jiathis_button_plus"></a> 
+    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
 
-        <div class="article-info info-on-right">
-          
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
 
-    
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="绕过chinanet验证方法-1" data-title="绕过chinanet验证方法" data-url="http://yoursite.com/2016/07/18/绕过chinanet验证方法-1/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
 
 </div>
       <footer id="footer">
@@ -318,8 +333,8 @@
 		mathjax: true,
 		animate: true,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false

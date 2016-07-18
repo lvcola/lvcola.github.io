@@ -71,13 +71,13 @@
 				<div class="tips-box hide">
 					<div class="tips-arrow"></div>
 					<ul class="tips-inner">
-						<li>Menu</li>
-						<li>Tags</li>
+						<li>菜单</li>
+						<li>标签</li>
 						
-						<li>Links</li>
+						<li>友情链接</li>
 						
 						
-						<li>About</li>
+						<li>关于我</li>
 						
 					</ul>
 				</div>
@@ -197,6 +197,71 @@
 </nav>
 
       <div class="body-wrap">
+  
+    <article id="post-绕过chinanet验证方法-1" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/07/18/绕过chinanet验证方法-1/" class="article-date">
+  	<time datetime="2016-07-18T03:31:25.000Z" itemprop="datePublished">2016-07-18</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/07/18/绕过chinanet验证方法-1/">绕过chinanet验证方法</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>   最近一直在用chinanet手机验证免费上网。但是因为chinanet有免费时长，往往在需要的时候上不了网。我注意到，当免费时长用完网页打不开会自动跳转到chinanet验证，但是QQ能上网。很奇怪，决定了解下计算机无线网络的原理，找找有没有机会绕过chinanet的验证照常登录一些常用网站。  后来百度了一些资料，发现QQ能上是因为QQ不需要dns解析，那这样子就好办了，和小伙伴讨论了一下，总结出来两种方法。</p>
+<h2 id="修改hosts文件夹"><a href="#修改hosts文件夹" class="headerlink" title="修改hosts文件夹"></a>修改hosts文件夹</h2><p>通过修改C:\Windows\System32\drivers\etc下的hosts，在自己电脑里建立一个关联数据库，把ping到的ip以及网址放入其中，这样子就能绕过dns解析。具体格式如下</p>
+<pre><code># Modified hosts start
+
+# xwj start
+220.181.57.217 www.baidu.com
+223.6.249.240  www.newcoder.com
+# xwj end
+
+# Modified hosts end
+</code></pre><h2 id="直接设置静态dns"><a href="#直接设置静态dns" class="headerlink" title="直接设置静态dns"></a>直接设置静态dns</h2><p>114开头的dns多是基础电信运营商自用的DNS系统，修改dns看看chinanet是否傻逼没有封别人的dns</p>
+<hr>
+<p> 持续更新，今天中午等免费时长用完试一试</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
   
     <article id="post-huffman压缩" class="article article-type-post" itemscope itemprop="blogPost">
   

@@ -6,16 +6,31 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <title>智能小车 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="防坠落智能小车心得:硬件设计需要细心，特别要注意各引脚和时钟的关系。有时候在两个不同头文件重复定义的相同引脚，会导致功能失效。另外可以用Led灯输出状态，这也是一个小技巧。">
+  <meta name="description" content="防坠落智能小车心得:硬件设计需要细心，特别要注意各引脚和时钟的关系。有时候在两个不同头文件重复定义的相同引脚，会导致功能失效。另外可以用Led灯输出状态，这也是一个小技巧。
+
+超声波模块实现防坠落void Ultran1_Init(void)//前置超声波模块
+{
+GPIO_InitTypeDef GPIO_InitStructure;
+ RCC_APB2PeriphClockCmd(ULTRA_">
 <meta property="og:type" content="article">
 <meta property="og:title" content="智能小车">
 <meta property="og:url" content="http://yoursite.com/2016/07/05/智能小车/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description" content="防坠落智能小车心得:硬件设计需要细心，特别要注意各引脚和时钟的关系。有时候在两个不同头文件重复定义的相同引脚，会导致功能失效。另外可以用Led灯输出状态，这也是一个小技巧。">
-<meta property="og:updated_time" content="2016-07-15T08:12:05.031Z">
+<meta property="og:description" content="防坠落智能小车心得:硬件设计需要细心，特别要注意各引脚和时钟的关系。有时候在两个不同头文件重复定义的相同引脚，会导致功能失效。另外可以用Led灯输出状态，这也是一个小技巧。
+
+超声波模块实现防坠落void Ultran1_Init(void)//前置超声波模块
+{
+GPIO_InitTypeDef GPIO_InitStructure;
+ RCC_APB2PeriphClockCmd(ULTRA_">
+<meta property="og:updated_time" content="2016-07-18T03:58:21.075Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="智能小车">
-<meta name="twitter:description" content="防坠落智能小车心得:硬件设计需要细心，特别要注意各引脚和时钟的关系。有时候在两个不同头文件重复定义的相同引脚，会导致功能失效。另外可以用Led灯输出状态，这也是一个小技巧。">
+<meta name="twitter:description" content="防坠落智能小车心得:硬件设计需要细心，特别要注意各引脚和时钟的关系。有时候在两个不同头文件重复定义的相同引脚，会导致功能失效。另外可以用Led灯输出状态，这也是一个小技巧。
+
+超声波模块实现防坠落void Ultran1_Init(void)//前置超声波模块
+{
+GPIO_InitTypeDef GPIO_InitStructure;
+ RCC_APB2PeriphClockCmd(ULTRA_">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -72,13 +87,13 @@
 				<div class="tips-box hide">
 					<div class="tips-arrow"></div>
 					<ul class="tips-inner">
-						<li>菜单</li>
-						<li>标签</li>
+						<li>Menu</li>
+						<li>Tags</li>
 						
-						<li>友情链接</li>
+						<li>Links</li>
 						
 						
-						<li>关于我</li>
+						<li>Über</li>
 						
 					</ul>
 				</div>
@@ -231,7 +246,6 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="防坠落智能小车"><a href="#防坠落智能小车" class="headerlink" title="防坠落智能小车"></a>防坠落智能小车</h1><p>心得:硬件设计需要细心，特别要注意各引脚和时钟的关系。有时候在两个不同头文件重复定义的相同引脚，会导致功能失效。另外可以用Led灯输出状态，这也是一个小技巧。</p>
-<a id="more"></a> 
 <hr>
 <h3 id="超声波模块实现防坠落"><a href="#超声波模块实现防坠落" class="headerlink" title="超声波模块实现防坠落"></a>超声波模块实现防坠落</h3><pre><code>void Ultran1_Init(void)//前置超声波模块
 {
@@ -273,9 +287,8 @@ for(i=0;i&lt;3;i++)
 }
 *p=Ultr_Temp/3/1000;     //取三次平均值，减少误差cm
 }
-
-
-void Ultran2_Init(void)//后置超声波模块
+</code></pre><a id="more"></a>   
+<pre><code>void Ultran2_Init(void)//后置超声波模块
 {
 GPIO_InitTypeDef GPIO_InitStructure;
  RCC_APB2PeriphClockCmd(ULTRA_CLK, ENABLE);
@@ -436,7 +449,7 @@ while(1)
 <div class="share_jia">
 	<!-- JiaThis Button BEGIN -->
 	<div class="jiathis_style">
-		<span class="jiathis_txt">分享到: &nbsp; </span>
+		<span class="jiathis_txt">Share to: &nbsp; </span>
 		<a class="jiathis_button_facebook"></a> 
     <a class="jiathis_button_twitter"></a>
     <a class="jiathis_button_plus"></a> 

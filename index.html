@@ -77,7 +77,7 @@
 						<li>Links</li>
 						
 						
-						<li>Über</li>
+						<li>About</li>
 						
 					</ul>
 				</div>
@@ -198,6 +198,62 @@
 
       <div class="body-wrap">
   
+    <article id="post-VS2010静态编译生成-exe文件-1" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/08/05/VS2010静态编译生成-exe文件-1/" class="article-date">
+  	<time datetime="2016-08-05T03:54:21.000Z" itemprop="datePublished">2016-08-05</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2016/08/05/VS2010静态编译生成-exe文件-1/">VS2010静态编译生成.exe文件</a>
+    </h1>
+  
+
+      </header>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>VS2010静态编译生成的.exe可执行文件，可以免安装免DLL在其他电脑直接运行。</p>
+<p>静态编译：就是在编译可执行文件的时候，将可执行文件需要调用的对应动态链接库（.so）中的部分提取出来，链接到可执行文件中去，使可执行文件在运行的时候不依赖动态链接库。</p>
+<p>编译方式（debug）：<br>设置：<br>1、项目 -&gt; 配置属性-&gt;常规-&gt;MFC的使用：在静态库中使用MFC（如果有使用MFC）。<br>2、项目 -&gt; 配置属性-&gt;C/C++-&gt;代码生成-&gt;运行库 :选择 多线程调试（/MTd）。</p>
+<p>编译时，选择的是debug，win32<br>然后执行编译生成方案，在该工程目录下的debug文件中，找到该.exe文件，即可在其他电脑运行。<br>debug方式生成的.exe文件会比较大，因为它包含了一些调试用的信息。</p>
+
+      
+    </div>
+    
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+    
+  </div>
+  
+</article>
+
+
+
+
+
+
+
+
+
+  
     <article id="post-绕过chinanet验证方法-1" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
@@ -225,7 +281,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>   最近一直在用chinanet手机验证免费上网。但是因为chinanet有免费时长，往往在需要的时候上不了网。我注意到，当免费时长用完网页打不开会自动跳转到chinanet验证，但是QQ能上网。很奇怪，决定了解下计算机无线网络的原理，找找有没有机会绕过chinanet的验证照常登录一些常用网站。  后来百度了一些资料，发现QQ能上是因为QQ不需要dns解析，那这样子就好办了，和小伙伴讨论了一下，总结出来两种方法。</p>
-<h2 id="修改hosts文件夹"><a href="#修改hosts文件夹" class="headerlink" title="修改hosts文件夹"></a>修改hosts文件夹</h2><p>通过修改C:\Windows\System32\drivers\etc下的hosts，在自己电脑里建立一个关联数据库，把ping到的ip以及网址放入其中，这样子就能绕过dns解析。具体格式如下</p>
+<h2 id="1-修改hosts文件夹"><a href="#1-修改hosts文件夹" class="headerlink" title="1.修改hosts文件夹"></a>1.修改hosts文件夹</h2><p>通过修改C:\Windows\System32\drivers\etc下的hosts，在自己电脑里建立一个关联数据库，把ping到的ip以及网址放入其中，这样子就能绕过dns解析。具体格式如下</p>
 <pre><code># Modified hosts start
 
 # xwj start
@@ -234,9 +290,10 @@
 # xwj end
 
 # Modified hosts end
-</code></pre><h2 id="直接设置静态dns"><a href="#直接设置静态dns" class="headerlink" title="直接设置静态dns"></a>直接设置静态dns</h2><p>114开头的dns多是基础电信运营商自用的DNS系统，修改dns看看chinanet是否傻逼没有封别人的dns</p>
+</code></pre><h2 id="2-直接设置静态dns"><a href="#2-直接设置静态dns" class="headerlink" title="2.直接设置静态dns"></a>2.直接设置静态dns</h2><p>114开头的dns多是基础电信运营商自用的DNS系统，修改dns看看chinanet是否傻逼没有封别人的dns</p>
+<h2 id="3-用代理服务器访问网络"><a href="#3-用代理服务器访问网络" class="headerlink" title="3.用代理服务器访问网络"></a>3.用代理服务器访问网络</h2><p>（1）修改internet选项为LAN设置代理服务器<br>（2）使用vpn</p>
 <hr>
-<p> 持续更新，今天中午等免费时长用完试一试</p>
+<p>7.18中午吃饭的时候试了试，很遗憾，这三种方法都并不能解决这个问题。但是又发现一点很奇怪的东西，知乎竟然在这种情况下也能使用。（不是缓存，有图片有更新。其他页面打开都需要验证）但是不管是ping zhihu.com还是ping 知乎的Ip 都ping不通。</p>
 
       
     </div>

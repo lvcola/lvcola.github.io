@@ -12,7 +12,7 @@
 <meta property="og:url" content="http://yoursite.com/2016/07/18/绕过chinanet验证方法-1/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="前言   最近一直在用chinanet手机验证免费上网。但是因为chinanet有免费时长，往往在需要的时候上不了网。我注意到，当免费时长用完网页打不开会自动跳转到chinanet验证，但是QQ能上网。很奇怪，决定了解下计算机无线网络的原理，找找有没有机会绕过chinanet的验证照常登录一些常用网站。  后来百度了一些资料，发现QQ能上是因为QQ不需要dns解析，那这样子就好办了，和小伙伴讨论了">
-<meta property="og:updated_time" content="2016-07-18T03:48:19.711Z">
+<meta property="og:updated_time" content="2016-07-18T07:07:50.145Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="绕过chinanet验证方法">
 <meta name="twitter:description" content="前言   最近一直在用chinanet手机验证免费上网。但是因为chinanet有免费时长，往往在需要的时候上不了网。我注意到，当免费时长用完网页打不开会自动跳转到chinanet验证，但是QQ能上网。很奇怪，决定了解下计算机无线网络的原理，找找有没有机会绕过chinanet的验证照常登录一些常用网站。  后来百度了一些资料，发现QQ能上是因为QQ不需要dns解析，那这样子就好办了，和小伙伴讨论了">
@@ -78,7 +78,7 @@
 						<li>Links</li>
 						
 						
-						<li>Über</li>
+						<li>About</li>
 						
 					</ul>
 				</div>
@@ -231,7 +231,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>   最近一直在用chinanet手机验证免费上网。但是因为chinanet有免费时长，往往在需要的时候上不了网。我注意到，当免费时长用完网页打不开会自动跳转到chinanet验证，但是QQ能上网。很奇怪，决定了解下计算机无线网络的原理，找找有没有机会绕过chinanet的验证照常登录一些常用网站。  后来百度了一些资料，发现QQ能上是因为QQ不需要dns解析，那这样子就好办了，和小伙伴讨论了一下，总结出来两种方法。</p>
-<h2 id="修改hosts文件夹"><a href="#修改hosts文件夹" class="headerlink" title="修改hosts文件夹"></a>修改hosts文件夹</h2><p>通过修改C:\Windows\System32\drivers\etc下的hosts，在自己电脑里建立一个关联数据库，把ping到的ip以及网址放入其中，这样子就能绕过dns解析。具体格式如下</p>
+<h2 id="1-修改hosts文件夹"><a href="#1-修改hosts文件夹" class="headerlink" title="1.修改hosts文件夹"></a>1.修改hosts文件夹</h2><p>通过修改C:\Windows\System32\drivers\etc下的hosts，在自己电脑里建立一个关联数据库，把ping到的ip以及网址放入其中，这样子就能绕过dns解析。具体格式如下</p>
 <pre><code># Modified hosts start
 
 # xwj start
@@ -240,9 +240,10 @@
 # xwj end
 
 # Modified hosts end
-</code></pre><h2 id="直接设置静态dns"><a href="#直接设置静态dns" class="headerlink" title="直接设置静态dns"></a>直接设置静态dns</h2><p>114开头的dns多是基础电信运营商自用的DNS系统，修改dns看看chinanet是否傻逼没有封别人的dns</p>
+</code></pre><h2 id="2-直接设置静态dns"><a href="#2-直接设置静态dns" class="headerlink" title="2.直接设置静态dns"></a>2.直接设置静态dns</h2><p>114开头的dns多是基础电信运营商自用的DNS系统，修改dns看看chinanet是否傻逼没有封别人的dns</p>
+<h2 id="3-用代理服务器访问网络"><a href="#3-用代理服务器访问网络" class="headerlink" title="3.用代理服务器访问网络"></a>3.用代理服务器访问网络</h2><p>（1）修改internet选项为LAN设置代理服务器<br>（2）使用vpn</p>
 <hr>
-<p> 持续更新，今天中午等免费时长用完试一试</p>
+<p>7.18中午吃饭的时候试了试，很遗憾，这三种方法都并不能解决这个问题。但是又发现一点很奇怪的东西，知乎竟然在这种情况下也能使用。（不是缓存，有图片有更新。其他页面打开都需要验证）但是不管是ping zhihu.com还是ping 知乎的Ip 都ping不通。</p>
 
       
     </div>
@@ -251,6 +252,15 @@
   
     
 <nav id="article-nav">
+  
+    <a href="/2016/08/05/VS2010静态编译生成-exe文件-1/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          VS2010静态编译生成.exe文件
+        
+      </div>
+    </a>
   
   
     <a href="/2016/07/15/huffman压缩/" id="article-nav-older" class="article-nav-link-wrap">

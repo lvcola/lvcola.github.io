@@ -4,17 +4,24 @@
   <meta charset="utf-8">
   
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <title>Archives: 2016 | Hexo</title>
+  <title>VS2010静态编译生成.exe文件 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/archives/2016/index.html">
+  <meta name="description" content="VS2010静态编译生成的.exe可执行文件，可以免安装免DLL在其他电脑直接运行。
+静态编译：就是在编译可执行文件的时候，将可执行文件需要调用的对应动态链接库（.so）中的部分提取出来，链接到可执行文件中去，使可执行文件在运行的时候不依赖动态链接库。
+编译方式（debug）：设置：1、项目 -&amp;gt; 配置属性-&amp;gt;常规-&amp;gt;MFC的使用：在静态库中使用MFC（如果有使用MFC）。2、项">
+<meta property="og:type" content="article">
+<meta property="og:title" content="VS2010静态编译生成.exe文件">
+<meta property="og:url" content="http://yoursite.com/2016/08/05/VS2010静态编译生成-exe文件-1/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description">
+<meta property="og:description" content="VS2010静态编译生成的.exe可执行文件，可以免安装免DLL在其他电脑直接运行。
+静态编译：就是在编译可执行文件的时候，将可执行文件需要调用的对应动态链接库（.so）中的部分提取出来，链接到可执行文件中去，使可执行文件在运行的时候不依赖动态链接库。
+编译方式（debug）：设置：1、项目 -&amp;gt; 配置属性-&amp;gt;常规-&amp;gt;MFC的使用：在静态库中使用MFC（如果有使用MFC）。2、项">
+<meta property="og:updated_time" content="2016-08-05T03:54:56.127Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
-<meta name="twitter:description">
+<meta name="twitter:title" content="VS2010静态编译生成.exe文件">
+<meta name="twitter:description" content="VS2010静态编译生成的.exe可执行文件，可以免安装免DLL在其他电脑直接运行。
+静态编译：就是在编译可执行文件的时候，将可执行文件需要调用的对应动态链接库（.so）中的部分提取出来，链接到可执行文件中去，使可执行文件在运行的时候不依赖动态链接库。
+编译方式（debug）：设置：1、项目 -&amp;gt; 配置属性-&amp;gt;常规-&amp;gt;MFC的使用：在静态库中使用MFC（如果有使用MFC）。2、项">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -196,130 +203,108 @@
 	</div>
 </nav>
 
-      <div class="body-wrap">
+      <div class="body-wrap"><article id="post-VS2010静态编译生成-exe文件-1" class="article article-type-post" itemscope itemprop="blogPost">
   
+    <div class="article-meta">
+      <a href="/2016/08/05/VS2010静态编译生成-exe文件-1/" class="article-date">
+  	<time datetime="2016-08-05T03:54:21.000Z" itemprop="datePublished">2016-08-05</time>
+</a>
+    </div>
   
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
     
     
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      VS2010静态编译生成.exe文件
+    </h1>
+  
+
+      </header>
       
+      <div class="article-info article-info-post">
+        
+        
+
+        <div class="clearfix"></div>
+      </div>
       
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2016" class="archive-year">2016</a>
-        </div>
-        <div class="archives">
     
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/08/05/VS2010静态编译生成-exe文件-1/" class="archive-article-date">
-  	<time datetime="2016-08-05T03:54:21.000Z" itemprop="datePublished">Aug 5</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/08/05/VS2010静态编译生成-exe文件-1/">VS2010静态编译生成.exe文件</a>
-    </h1>
-  
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>VS2010静态编译生成的.exe可执行文件，可以免安装免DLL在其他电脑直接运行。</p>
+<p>静态编译：就是在编译可执行文件的时候，将可执行文件需要调用的对应动态链接库（.so）中的部分提取出来，链接到可执行文件中去，使可执行文件在运行的时候不依赖动态链接库。</p>
+<p>编译方式（debug）：<br>设置：<br>1、项目 -&gt; 配置属性-&gt;常规-&gt;MFC的使用：在静态库中使用MFC（如果有使用MFC）。<br>2、项目 -&gt; 配置属性-&gt;C/C++-&gt;代码生成-&gt;运行库 :选择 多线程调试（/MTd）。</p>
+<p>编译时，选择的是debug，win32<br>然后执行编译生成方案，在该工程目录下的debug文件中，找到该.exe文件，即可在其他电脑运行。<br>debug方式生成的.exe文件会比较大，因为它包含了一些调试用的信息。</p>
 
-        <div class="article-info info-on-right">
-          
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
+      
+    </div>
+    
   </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2016/07/18/绕过chinanet验证方法-1/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">绕过chinanet验证方法</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/07/18/绕过chinanet验证方法-1/" class="archive-article-date">
-  	<time datetime="2016-07-18T03:31:25.000Z" itemprop="datePublished">Jul 18</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/07/18/绕过chinanet验证方法-1/">绕过chinanet验证方法</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/07/15/huffman压缩/" class="archive-article-date">
-  	<time datetime="2016-07-15T07:32:12.000Z" itemprop="datePublished">Jul 15</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/07/15/huffman压缩/">huffman压缩</a>
-    </h1>
-  
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">Share to: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+    <a class="jiathis_button_twitter"></a>
+    <a class="jiathis_button_plus"></a> 
+    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
 
-        <div class="article-info info-on-right">
-          
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	<a href="/2016/07/05/智能小车/" class="archive-article-date">
-  	<time datetime="2016-07-05T02:41:07.000Z" itemprop="datePublished">Jul 5</time>
-</a>
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-      <a class="archive-article-title" href="/2016/07/05/智能小车/">智能小车</a>
-    </h1>
-  
 
-        <div class="article-info info-on-right">
-          
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
 
-    
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="VS2010静态编译生成-exe文件-1" data-title="VS2010静态编译生成.exe文件" data-url="http://yoursite.com/2016/08/05/VS2010静态编译生成-exe文件-1/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
 
 </div>
       <footer id="footer">
@@ -345,8 +330,8 @@
 		mathjax: true,
 		animate: true,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: false

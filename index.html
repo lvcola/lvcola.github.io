@@ -77,7 +77,7 @@
 						<li>Links</li>
 						
 						
-						<li>About</li>
+						<li>Über</li>
 						
 					</ul>
 				</div>
@@ -225,7 +225,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="网络聊天室"><a href="#网络聊天室" class="headerlink" title="网络聊天室"></a>网络聊天室</h1><p>心得：1.利用非阻塞函数select来监测客服端套接字描述符的变化来监测多个终端的输入（最多不能超过FD_SETSIZE）   2.在开发过程中遇到了几个问题，一是tmp_inset改成inset后会导致只能连接一次，暂时这个问题还无法解决。 二是曾遇到一个困扰两三个礼拜的问题，即登录A后再登录B，A的就无法发送信息到服务器了。后来发现自己recv函数中的描述符是个定值，即每次连接之后这个值就不可逆的改变了，变成了B的描述符。解决方法：每次fd的描述符被加入了集合inset中，如果要处理需要的客户端，要给出对应的客户端描述符。 3.利用了双线程，服务器要有一个读信息的线程，一个将读到的信息发给所有客户端的线程。而客户端同理需要两个线程来处理读写。</p>
-<p>还未解决： 1.账号密码应该放入一个数据库中，实现账户的注册登录 2.界面 3.能实现单对单聊天  4.心跳包还需要完善<br>    &lt;!more&gt;</p>
+<p>还未解决： 1.账号密码应该放入一个数据库中，实现账户的注册登录 2.界面 3.能实现单对单聊天  4.心跳包还需要完善</p>
 <h2 id="服务器端"><a href="#服务器端" class="headerlink" title="服务器端"></a>服务器端</h2><pre><code>#include&lt;stdio.h&gt;
 #include&lt;stdlib.h&gt;
 #include&lt;sys/socket.h&gt;
@@ -362,7 +362,8 @@ int main()
     close(sockfd);
     exit(0);
 }
-</code></pre><h2 id="客户端"><a href="#客户端" class="headerlink" title="客户端"></a>客户端</h2><pre><code>#include &lt;stdio.h&gt;
+</code></pre><p>&lt;!more&gt;## 客户端</p>
+<pre><code>#include &lt;stdio.h&gt;
 #include &lt;stdlib.h&gt;
 #include &lt;string.h&gt;
 #include &lt;sys/types.h&gt;

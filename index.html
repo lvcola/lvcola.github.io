@@ -362,69 +362,7 @@ int main()
     close(sockfd);
     exit(0);
 }
-</code></pre><p>&lt;!more&gt;## 客户端</p>
-<pre><code>#include &lt;stdio.h&gt;
-#include &lt;stdlib.h&gt;
-#include &lt;string.h&gt;
-#include &lt;sys/types.h&gt;
-#include &lt;sys/socket.h&gt;
-#include &lt;netinet/in.h&gt;
-#include &lt;errno.h&gt;
-#include &lt;netdb.h&gt;
-
-#define PORT 4321
-#define BUFFER_SIZE 1024
-
-int main(int argc,char*argv[])
-{
-    pid_t pid;
-    int sockfd,sendbytes;
-    char buf[BUFFER_SIZE];
-    struct hostent *host;
-    struct sockaddr_in serv_addr;
-    if(argc &lt; 2)
-    {    printf(&quot;argv error&quot;);
-        exit(1);
-    }
-
-    if((host = gethostbyname(argv[1])) == NULL)
-    {    perror(&quot;gethostbyname error&quot;);
-        exit(1);
-    }
-
-    if((sockfd = socket(AF_INET,SOCK_STREAM,0)) == -1)
-    {    perror(&quot;socket error&quot;);
-        exit(1);
-    }
-    serv_addr.sin_family = AF_INET;
-    serv_addr.sin_port = htons(PORT);
-    serv_addr.sin_addr = *((struct in_addr *)host-&gt;h_addr);
-    memset(&amp;(serv_addr.sin_zero),0,8);
-
-    if(connect(sockfd,(struct sockaddr *)&amp;serv_addr,sizeof(struct sockaddr)) == -1)
-    {    perror(&quot;connect error&quot;);
-        exit(1);
-    }
-//    pid = fork();
-//    if(pid == 0)
-    //{
-
-
-    while(1){    
-        memset(buf,0,sizeof(buf));
-        scanf(&quot;%s&quot;,buf);
-        sendbytes = send(sockfd,buf,BUFFER_SIZE,0);
-        if(sendbytes == -1)
-        {    perror(&quot;send error&quot;);
-            exit(1);
-        }
-        if(strcmp(buf,&quot;Q&quot;) == 0)
-            break;    
-    }
-    close(sockfd);
-    exit(0);
-}
-</code></pre>
+</code></pre><p>
       
     </div>
     
@@ -433,6 +371,10 @@ int main(int argc,char*argv[])
       
       
 
+      
+        <p class="article-more-link">
+          <a  href="/2016/08/17/linux下网络聊天室/#more">more >></a>
+        </p>
       
       <div class="clearfix"></div>
     </div>
@@ -599,6 +541,150 @@ int main(int argc,char*argv[])
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="huffman压缩"><a href="#huffman压缩" class="headerlink" title="huffman压缩"></a>huffman压缩</h1><p>心得：在huffman.h中有一个encode()函数，其中定义了一个MyString类的变量str,但是给它赋好值return的时候就会出错，百思不得其解。问过老师，老师说是没有深拷贝。可我mystring中写了深拷贝。后来看C专家编程，看到P49的时候就懂。是因为当控制流离开局部变量的范围时，自动变量便自动失效，这就意味着即使返回一个指向局部变量的指针，当函数结束时，变量被销毁，谁也不知道这个指针所指向的地址内容是什么。只要将这个变量设置为static就能解决这个问题。</p>
+<hr>
+<h2 id="huffman-h"><a href="#huffman-h" class="headerlink" title="huffman.h"></a>huffman.h</h2><pre><code>#ifndef _HuffmanTree_H
+#define _HuffmanTree_H
+#include &lt;fstream&gt;
+#include &quot;Seqlist.h&quot;
+#include &quot;Mystring.h&quot;
+#include &quot;TriElement.h&quot;
+
+class HuffmanTree
+{
+ protected:
+    MyString charset;//字符集
+    Seqlist&lt;TriElement&gt;huftree;
+    void encode(int i); //单解码
+   public:
+    HuffmanTree(MyString &amp;m,int weight[],int n);
+    void printCode();
+    MyString encode(MyString &amp; text);//编码，压缩
+    void decode();//译码，解压缩
+
+};
+
+
+
+HuffmanTree::HuffmanTree(MyString &amp;m,int weight[], int n)//字符集，权值，长度
+    :huftree(2*n-1)
+{
+    for (int i = 0; i &lt; n; i++)
+    {
+        this-&gt;charset.insert(i,m[i]);
+        this-&gt;huftree.insert(TriElement(weight[i], -1, -1, -1));
+    }
+
+    for (int i = 0; i &lt; n - 1; i++)
+    {
+        int min1 = 0x7fffffff, min2 = min1, x1 = 0, x2 = x1;
+        for (int j = 0; j &lt; n + i;j++)
+            if (huftree[j].parent == -1 &amp;&amp; huftree[j].data &lt; min1)
+            {
+                min2 = min1;
+                x2 = x1;
+                min1 = huftree[j].data;
+                x1 = j;
+            }
+            else if (huftree[j].parent == -1 &amp;&amp; huftree[j].data &lt; min2)
+                {
+                    min2 = huftree[j].data;
+                    x2 = j;
+                }
+
+        huftree[x1].parent = n + i;
+        huftree[x2].parent = n + i;
+        huftree.insert(TriElement(huftree[x1].data + huftree[x2].data, -1, x1, x2));
+    }
+    cout &lt;&lt; &quot;Huffman 树的结点顺序表：&quot; &lt;&lt; this-&gt;huftree;
+}
+void  HuffmanTree::encode(int i)
+{    MyString str;
+    int child = i,parent = huftree[child].parent;//已经重载下标,huftree[i]是哈夫曼第i个
+    while(parent != -1)//不是根节点
+    {    if(huftree[parent].left == child)//是左子树
+            str+=&apos;0&apos;;
+        else
+            str+=&apos;1&apos;;
+        child = parent;
+        parent = huftree[child].parent;
+    }
+    str.reverse();//反转字符串
+    cout&lt;&lt;str&lt;&lt;&quot;,&quot;;//临时的方法，按书上会出现一个问题
+
+}
+
+void HuffmanTree::printCode()
+{    
+    cout &lt;&lt; &quot;Huffman 编码，&quot;;
+    for (int i = 0; i &lt; this-&gt;charset.count(); i++)
+    {    
+        cout &lt;&lt; this-&gt;charset[i] &lt;&lt; &quot;：&quot;;
+        //cout&lt;&lt;str&lt;&lt;&quot;,&quot;;
+        encode(i) ;
+    }
+    cout &lt;&lt; endl;
+}
+
+MyString HuffmanTree::encode(MyString &amp;text)
+{    static MyString codestr;
+    ofstream fout;
+    int child ,parent;//已经重载下标,huftree[i]是哈夫曼第i个
+    int i,j;
+    for(i = 0;i&lt;text.count();i++)
+    {    MyString str;
+        for(j = 0;j &lt; this-&gt;charset.count();j++)
+            if(text[i] == this-&gt;charset[j])
+                break;//此时j就是该字符在哈夫曼树中的位置
+        child = j;
+        parent = huftree[child].parent;
+        while(parent != -1)//不是根节点
+        {    if(huftree[parent].left == child)//是左子树
+                str+=&apos;0&apos;;
+            else
+                str+=&apos;1&apos;;
+            child = parent;
+            parent = huftree[child].parent;
+        }
+        str.reverse();//反转字符串
+        codestr += str;
+    }
+    //cout&lt;&lt;&quot;压缩后为：&quot;&lt;&lt;codestr;//临时的方法，按书上会出现一个问题
+    //cout&lt;&lt;&quot;压缩比为&quot;&lt;&lt;codestr.count()&lt;&lt;&quot;:&quot;&lt;&lt;text.count()*8;//需要改，要改成浮点数
+    fout.open(&quot;c://2.txt&quot;);
+    fout&lt;&lt;codestr;
+    fout.close();
+    return codestr;
+}
+
+void HuffmanTree::decode()
+{
+    char s[1000];//源文档中字符信息
+    ifstream fin;//
+    fin.open(&quot;c://2.txt&quot;);//从C盘1.txt中读取文件信息
+    fin &gt;&gt; s;//把文件中信息读入字符串s中
+    MyString bef_text(s);//压缩后的字符信息
+    fin.close();
+
+    MyString af_text;
+
+    int node = this-&gt;huftree.count() - 1;
+    for (int i = 0; i &lt; bef_text.count(); i++)
+    {
+        if (bef_text[i] == &apos;0&apos;)
+            node = huftree[node].left;
+        else node = huftree[node].right;
+        if (huftree[node].leaf())
+        {
+            af_text += this-&gt;charset[node];
+            node = this-&gt;huftree.count() - 1;
+        }
+    }
+    cout&lt;&lt;&quot;解码为&quot;&lt;&lt;af_text&lt;&lt;endl;
+}
+
+
+#endif
+</code></pre>
       
     </div>
     

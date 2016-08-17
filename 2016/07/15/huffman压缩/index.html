@@ -12,7 +12,7 @@
 <meta property="og:url" content="http://yoursite.com/2016/07/15/huffman压缩/index.html">
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="huffman压缩心得：在huffman.h中有一个encode()函数，其中定义了一个MyString类的变量str,但是给它赋好值return的时候就会出错，百思不得其解。问过老师，老师说是没有深拷贝。可我mystring中写了深拷贝。后来看C专家编程，看到P49的时候就懂。是因为当控制流离开局部变量的范围时，自动变量便自动失效，这就意味着即使返回一个指向局部变量的指针，当函数结束时，变量被销">
-<meta property="og:updated_time" content="2016-07-15T08:11:42.375Z">
+<meta property="og:updated_time" content="2016-08-17T02:21:34.203Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="huffman压缩">
 <meta name="twitter:description" content="huffman压缩心得：在huffman.h中有一个encode()函数，其中定义了一个MyString类的变量str,但是给它赋好值return的时候就会出错，百思不得其解。问过老师，老师说是没有深拷贝。可我mystring中写了深拷贝。后来看C专家编程，看到P49的时候就懂。是因为当控制流离开局部变量的范围时，自动变量便自动失效，这就意味着即使返回一个指向局部变量的指针，当函数结束时，变量被销">
@@ -231,7 +231,6 @@
     <div class="article-entry" itemprop="articleBody">
       
         <h1 id="huffman压缩"><a href="#huffman压缩" class="headerlink" title="huffman压缩"></a>huffman压缩</h1><p>心得：在huffman.h中有一个encode()函数，其中定义了一个MyString类的变量str,但是给它赋好值return的时候就会出错，百思不得其解。问过老师，老师说是没有深拷贝。可我mystring中写了深拷贝。后来看C专家编程，看到P49的时候就懂。是因为当控制流离开局部变量的范围时，自动变量便自动失效，这就意味着即使返回一个指向局部变量的指针，当函数结束时，变量被销毁，谁也不知道这个指针所指向的地址内容是什么。只要将这个变量设置为static就能解决这个问题。</p>
-<a id="more"></a>
 <hr>
 <h2 id="huffman-h"><a href="#huffman-h" class="headerlink" title="huffman.h"></a>huffman.h</h2><pre><code>#ifndef _HuffmanTree_H
 #define _HuffmanTree_H
@@ -375,7 +374,8 @@ void HuffmanTree::decode()
 
 
 #endif
-</code></pre><h2 id="main"><a href="#main" class="headerlink" title="main"></a>main</h2><pre><code>#include &lt;iostream&gt;
+</code></pre><a id="more"></a>  
+<h2 id="main"><a href="#main" class="headerlink" title="main"></a>main</h2><pre><code>#include &lt;iostream&gt;
 using namespace std;
 #include &quot;HuffmanTree.h&quot;
 

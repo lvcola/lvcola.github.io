@@ -4,17 +4,18 @@
   <meta charset="utf-8">
   
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <title>Hexo</title>
+  <title>linux下网络聊天室 | Hexo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/index.html">
+  <meta name="description" content="网络聊天室心得：1.利用非阻塞函数select来监测客服端套接字描述符的变化来监测多个终端的输入（最多不能超过FD_SETSIZE）   2.在开发过程中遇到了几个问题，一是tmp_inset改成inset后会导致只能连接一次，暂时这个问题还无法解决。 二是曾遇到一个困扰两三个礼拜的问题，即登录A后再登录B，A的就无法发送信息到服务器了。后来发现自己recv函数中的描述符是个定值，即每次连接之后这">
+<meta property="og:type" content="article">
+<meta property="og:title" content="linux下网络聊天室">
+<meta property="og:url" content="http://yoursite.com/2016/08/17/linux下网络聊天室/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:description">
+<meta property="og:description" content="网络聊天室心得：1.利用非阻塞函数select来监测客服端套接字描述符的变化来监测多个终端的输入（最多不能超过FD_SETSIZE）   2.在开发过程中遇到了几个问题，一是tmp_inset改成inset后会导致只能连接一次，暂时这个问题还无法解决。 二是曾遇到一个困扰两三个礼拜的问题，即登录A后再登录B，A的就无法发送信息到服务器了。后来发现自己recv函数中的描述符是个定值，即每次连接之后这">
+<meta property="og:updated_time" content="2016-08-17T02:15:17.777Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
-<meta name="twitter:description">
+<meta name="twitter:title" content="linux下网络聊天室">
+<meta name="twitter:description" content="网络聊天室心得：1.利用非阻塞函数select来监测客服端套接字描述符的变化来监测多个终端的输入（最多不能超过FD_SETSIZE）   2.在开发过程中遇到了几个问题，一是tmp_inset改成inset后会导致只能连接一次，暂时这个问题还无法解决。 二是曾遇到一个困扰两三个礼拜的问题，即登录A后再登录B，A的就无法发送信息到服务器了。后来发现自己recv函数中的描述符是个定值，即每次连接之后这">
   
     <link rel="alternative" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
@@ -196,9 +197,7 @@
 	</div>
 </nav>
 
-      <div class="body-wrap">
-  
-    <article id="post-linux下网络聊天室" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-linux下网络聊天室" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
       <a href="/2016/08/17/linux下网络聊天室/" class="article-date">
@@ -214,12 +213,19 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/08/17/linux下网络聊天室/">linux下网络聊天室</a>
+    <h1 class="article-title" itemprop="name">
+      linux下网络聊天室
     </h1>
   
 
       </header>
+      
+      <div class="article-info article-info-post">
+        
+        
+
+        <div class="clearfix"></div>
+      </div>
       
     
     <div class="article-entry" itemprop="articleBody">
@@ -427,305 +433,68 @@ int main(int argc,char*argv[])
       
     </div>
     
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
   </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2016/08/05/VS2010静态编译生成-exe文件-1/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">VS2010静态编译生成.exe文件</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
   
 </article>
 
 
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">Share to: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+    <a class="jiathis_button_twitter"></a>
+    <a class="jiathis_button_plus"></a> 
+    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
 
 
 
 
 
 
-
-  
-    <article id="post-VS2010静态编译生成-exe文件-1" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/08/05/VS2010静态编译生成-exe文件-1/" class="article-date">
-  	<time datetime="2016-08-05T03:54:21.000Z" itemprop="datePublished">2016-08-05</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/08/05/VS2010静态编译生成-exe文件-1/">VS2010静态编译生成.exe文件</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>VS2010静态编译生成的.exe可执行文件，可以免安装免DLL在其他电脑直接运行。</p>
-<p>静态编译：就是在编译可执行文件的时候，将可执行文件需要调用的对应动态链接库（.so）中的部分提取出来，链接到可执行文件中去，使可执行文件在运行的时候不依赖动态链接库。</p>
-<p>编译方式（debug）：<br>设置：<br>1、项目 -&gt; 配置属性-&gt;常规-&gt;MFC的使用：在静态库中使用MFC（如果有使用MFC）。<br>2、项目 -&gt; 配置属性-&gt;C/C++-&gt;代码生成-&gt;运行库 :选择 多线程调试（/MTd）。</p>
-<p>编译时，选择的是debug，win32<br>然后执行编译生成方案，在该工程目录下的debug文件中，找到该.exe文件，即可在其他电脑运行。<br>debug方式生成的.exe文件会比较大，因为它包含了一些调试用的信息。</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="linux下网络聊天室" data-title="linux下网络聊天室" data-url="http://yoursite.com/2016/08/17/linux下网络聊天室/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
 
 
 
 
-
-
-
-
-
-  
-    <article id="post-绕过chinanet验证方法-1" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/07/18/绕过chinanet验证方法-1/" class="article-date">
-  	<time datetime="2016-07-18T03:31:25.000Z" itemprop="datePublished">2016-07-18</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/07/18/绕过chinanet验证方法-1/">绕过chinanet验证方法</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>   最近一直在用chinanet手机验证免费上网。但是因为chinanet有免费时长，往往在需要的时候上不了网。我注意到，当免费时长用完网页打不开会自动跳转到chinanet验证，但是QQ能上网。很奇怪，决定了解下计算机无线网络的原理，找找有没有机会绕过chinanet的验证照常登录一些常用网站。  后来百度了一些资料，发现QQ能上是因为QQ不需要dns解析，那这样子就好办了，和小伙伴讨论了一下，总结出来两种方法。</p>
-<h2 id="1-修改hosts文件夹"><a href="#1-修改hosts文件夹" class="headerlink" title="1.修改hosts文件夹"></a>1.修改hosts文件夹</h2><p>通过修改C:\Windows\System32\drivers\etc下的hosts，在自己电脑里建立一个关联数据库，把ping到的ip以及网址放入其中，这样子就能绕过dns解析。具体格式如下</p>
-<pre><code># Modified hosts start
-
-# xwj start
-220.181.57.217 www.baidu.com
-223.6.249.240  www.newcoder.com
-# xwj end
-
-# Modified hosts end
-</code></pre><h2 id="2-直接设置静态dns"><a href="#2-直接设置静态dns" class="headerlink" title="2.直接设置静态dns"></a>2.直接设置静态dns</h2><p>114开头的dns多是基础电信运营商自用的DNS系统，修改dns看看chinanet是否傻逼没有封别人的dns</p>
-<h2 id="3-用代理服务器访问网络"><a href="#3-用代理服务器访问网络" class="headerlink" title="3.用代理服务器访问网络"></a>3.用代理服务器访问网络</h2><p>（1）修改internet选项为LAN设置代理服务器<br>（2）使用vpn</p>
-<hr>
-<p>7.18中午吃饭的时候试了试，很遗憾，这三种方法都并不能解决这个问题。但是又发现一点很奇怪的东西，知乎竟然在这种情况下也能使用。（不是缓存，有图片有更新。其他页面打开都需要验证）但是不管是ping zhihu.com还是ping 知乎的Ip 都ping不通。</p>
-
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-huffman压缩" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/07/15/huffman压缩/" class="article-date">
-  	<time datetime="2016-07-15T07:32:12.000Z" itemprop="datePublished">2016-07-15</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/07/15/huffman压缩/">huffman压缩</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="huffman压缩"><a href="#huffman压缩" class="headerlink" title="huffman压缩"></a>huffman压缩</h1><p>心得：在huffman.h中有一个encode()函数，其中定义了一个MyString类的变量str,但是给它赋好值return的时候就会出错，百思不得其解。问过老师，老师说是没有深拷贝。可我mystring中写了深拷贝。后来看C专家编程，看到P49的时候就懂。是因为当控制流离开局部变量的范围时，自动变量便自动失效，这就意味着即使返回一个指向局部变量的指针，当函数结束时，变量被销毁，谁也不知道这个指针所指向的地址内容是什么。只要将这个变量设置为static就能解决这个问题。</p>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a  href="/2016/07/15/huffman压缩/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-智能小车" class="article article-type-post" itemscope itemprop="blogPost">
-  
-    <div class="article-meta">
-      <a href="/2016/07/05/智能小车/" class="article-date">
-  	<time datetime="2016-07-05T02:41:07.000Z" itemprop="datePublished">2016-07-05</time>
-</a>
-    </div>
-  
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/07/05/智能小车/">智能小车</a>
-    </h1>
-  
-
-      </header>
-      
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="防坠落智能小车"><a href="#防坠落智能小车" class="headerlink" title="防坠落智能小车"></a>防坠落智能小车</h1><p>心得:硬件设计需要细心，特别要注意各引脚和时钟的关系。有时候在两个不同头文件重复定义的相同引脚，会导致功能失效。另外可以用Led灯输出状态，这也是一个小技巧。</p>
-<hr>
-<h3 id="超声波模块实现防坠落"><a href="#超声波模块实现防坠落" class="headerlink" title="超声波模块实现防坠落"></a>超声波模块实现防坠落</h3><pre><code>void Ultran1_Init(void)//前置超声波模块
-{
-GPIO_InitTypeDef GPIO_InitStructure;
- RCC_APB2PeriphClockCmd(ULTRA_CLK, ENABLE);
-
-GPIO_InitStructure.GPIO_Pin =ULTRA1_TRIG;       //发送电平引脚
- GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
- GPIO_InitStructure.GPIO_Mode = GPIO_Mode_Out_PP;//推挽输出
- GPIO_Init(ULTRA_PORT, &amp;GPIO_InitStructure);
-GPIO_ResetBits(ULTRA_PORT,ULTRA1_TRIG);
-
-GPIO_InitStructure.GPIO_Pin =ULTRA1_ECHO;        //接收电平引脚
- GPIO_InitStructure.GPIO_Speed = GPIO_Speed_50MHz;
- GPIO_InitStructure.GPIO_Mode = GPIO_Mode_IN_FLOATING;//浮空输入
- GPIO_Init(ULTRA_PORT, &amp;GPIO_InitStructure);    
-}
-
-
-void Ultra1_Ranging(float *p)
-{
-u8 i;
-u32 j;
-float Ultr_Temp;    
-for(i=0;i&lt;3;i++)
-{
-    TRIG1_Send=1;
-    delay_ms(10);
-    TRIG1_Send=0;
-    while(!ECHO1_Reci);
-    while(ECHO1_Reci)
-    {
-        delay_us(10);
-        j++;
-    }
-    Ultr_Temp+=340/2*j;//最大测距距离3m
-    j=0;
-    delay_ms(60);//防止发射信号对回响信号的影响
-}
-*p=Ultr_Temp/3/1000;     //取三次平均值，减少误差cm
-}
-</code></pre>
-      
-    </div>
-    
-    <div class="article-info article-info-index">
-      
-      
-      
-
-      
-        <p class="article-more-link">
-          <a  href="/2016/07/05/智能小车/#more">more >></a>
-        </p>
-      
-      <div class="clearfix"></div>
-    </div>
-    
-  </div>
-  
-</article>
-
-
-
-
-
-
-
-
-
-  
-  
 </div>
       <footer id="footer">
   <div class="outer">
@@ -749,8 +518,8 @@ for(i=0;i&lt;3;i++)
 		fancybox: true,
 		mathjax: true,
 		animate: true,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
